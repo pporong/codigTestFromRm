@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gbr.rmSoft.CodingTest.repository.ComRepository"> 
+
+	<select id="getComList" resultType="COMPANY_TB">
+		SELECT * FROM COMPANY_TB
+		WHERE com_nm LIKE '%${com_nm}%'
+		AND com_bossNm LIKE '%${com_bossNm}%'
+		<if test="com_id != 0">
+			AND com_id = #{com_id}
+		</if>
+		ORDER BY com_id ASC
+	</select>
+
+	<select id="getCountComs" resultType="int">
+		SELECT COUNT(*) FROM COMPANY_TB
+	</select>
+
+
+</mapper>

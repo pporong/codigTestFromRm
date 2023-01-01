@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gbr.rmSoft.CodingTest.repository.CifRepository"> 
+
+	<select id="getCifList" resultType="CTMINFO_TB">
+		SELECT CIF.*,
+		C.ctm_nm,
+		I.item_nm, I.item_price
+		FROM CTMINFO_TB AS CIF
+		INNER JOIN CUSTOMER_TB AS C
+		ON C.ctm_id = CIF.ctm_id
+		INNER JOIN ITEM_TB AS I
+		ON I.item_id = CIF.item_id
+		AND C.ctm_nm LIKE '%${ctm_nm}%'
+		AND I.item_nm LIKE '%${item_nm}%'
+		<if test="ctminfo_buySeq != 0">
+			AND ctminfo_buySeq = #{ctminfo_buySeq}
+		</if>
+		<if test="ctm_id != 0">
+			AND ctm_id = #{ctm_id}
+		</if>
+		<if test="item_id != 0">
+			AND item_id = #{item_id}
+		</if>
+		
+		GROUP BY CIF.ctminfo_buySeq
+	</select>
+
+	<select id="getCountCif" resultType="int">
+		SELECT COUNT(*) FROM CTMINFO_TB
+	</select>
+
+
+</mapper>

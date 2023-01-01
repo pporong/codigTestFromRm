@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gbr.rmSoft.CodingTest.repository.ItemRepository"> 
+
+	<select id="getItemList" resultType="ITEM_TB">
+		SELECT I.*, CO.com_nm AS company
+		FROM ITEM_TB AS I
+		INNER JOIN COMPANY_TB AS CO
+		ON I.com_id = CO.com_id
+		AND I.item_nm LIKE '%${item_nm}%'
+		<if test="item_id != 0">
+			AND I.item_id = #{item_id}
+		</if>
+		<if test="com_id != 0">
+			AND CO.com_id = #{com_id}
+		</if>
+		GROUP BY item_id
+	</select>
+
+	<select id="getCountItems" resultType="int">
+		SELECT COUNT(*) FROM ITEM_TB
+	</select>
+
+
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gbr.rmSoft.CodingTest.repository.CtmRepository"> 
+
+	<select id="getCtmList" resultType="CUSTOMER_TB">
+		SELECT ctm_id, ctm_nm, ctm_hp FROM CUSTOMER_TB
+		WHERE ctm_nm LIKE '%${ctm_nm}%'
+		<if test="ctm_id != 0">
+			AND ctm_id = #{ctm_id}
+		</if>
+		ORDER BY ctm_id;
+	</select>
+
+	<select id="getCountCtms" resultType="int">
+		SELECT COUNT(*) FROM CUSTOMER_TB
+	</select>
+
+
+</mapper>
