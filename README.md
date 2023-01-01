@@ -2,7 +2,7 @@
 - 열심히 노력해 보았으나 아직 실력이 미흡하여 docker를 이용한 서버 구축은 하지 못 했습니다.
 - 하지만 할 수 있는데까지 열심히 해 보았습니다. 기회를 주신다면 열심히 배우고 공부하겠습니다. 감사합니다.
 
-DATABASE MySQL: codingTest
+DATABASE MySQL: codingTest /
 JAVA / STS4 / Springboot
 - 각 코드에서 파라미터를 활용하여 검색 -> 데이터 관계성 확인 
 
