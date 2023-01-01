@@ -15,7 +15,19 @@ public class CtmService {
 	private CtmRepository ctmRepository;
 		
 	public List<CUSTOMER_TB> getCtmList(int ctm_id, String ctm_nm, String ctm_hp) {
-		return ctmRepository.getCtmList(ctm_id, ctm_nm, ctm_hp);
+				
+        List<CUSTOMER_TB> list = ctmRepository.getCtmList(ctm_id, ctm_nm, ctm_hp);
+        
+        for (CUSTOMER_TB tb : list) {
+
+	        char [] temp = tb.getCtm_hp().toCharArray();
+	        temp[temp.length-2] = '*';
+	        temp[temp.length-3] = '*';
+	        
+	        tb.setCtm_hp(new String(temp));
+		}
+    	
+		return list;	
 	}
 	
 	public int getCountCtms() {

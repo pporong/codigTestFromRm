@@ -66,7 +66,7 @@ public class CodingTestController {
 		int ctmsCount = ctmService.getCountCtms();
 
 		List<CUSTOMER_TB> ctmList = ctmService.getCtmList(ctm_id, ctm_nm, ctm_hp);
-
+		
 		ResultData rd = ResultData.from(ctmsCount, ctmList);
 
 		return rd;
