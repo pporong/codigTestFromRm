@@ -18,10 +18,10 @@
 			AND ctminfo_buySeq = #{ctminfo_buySeq}
 		</if>
 		<if test="ctm_id != 0">
-			AND ctm_id = #{ctm_id}
+			AND CIF.ctm_id = #{ctm_id}
 		</if>
 		<if test="item_id != 0">
-			AND item_id = #{item_id}
+			AND CIF.item_id = #{item_id}
 		</if>
 		
 		GROUP BY CIF.ctminfo_buySeq
